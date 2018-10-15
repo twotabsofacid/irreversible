@@ -1,4 +1,4 @@
-# Become Irreversible
+# Irreversible
 
 > Some art code :joy:
 
