@@ -18,9 +18,11 @@ void ofApp::setup(){
 		unsigned char g = number >> 8 & 0xFF;
 		unsigned char b = number & 0xFF;
 		ofColor color = ofColor(r, g, b);
+		color.setBrightness(222);
 		Flower flower = Flower(color);
 		flowers.push_back(flower);
 	}
+	cout << flowers.size() << endl;
 }
 
 //--------------------------------------------------------------

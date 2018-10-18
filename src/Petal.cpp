@@ -1,5 +1,7 @@
 #include "Petal.hpp"
 
+float deg = 0.0;
+
 // Use an initializer list
 Petal::Petal()
 : pos(0, 0),
@@ -22,17 +24,37 @@ void Petal::update(){
     pos += vel;
     size.x++;
     size.y++;
+    deg += 0.1;
 }
 
 void Petal::draw(){
     ofPushStyle();
-    float b = color.getBrightness();
-    b += 1;
-    color.setBrightness(b);
+    ofPushMatrix();
+    ofEnableSmoothing();
+    ofEnableAntiAliasing();
+    // float b = color.getBrightness();
+    // b += 1;
+    // color.setBrightness(b);
     incrementer += 0.5;
     incrementer = ofClamp(incrementer, 0, 255);
-    ofSetColor(color, 255 - incrementer);
-    ofDrawEllipse(pos.x, pos.y, size.x, size.y);
+    ofColor c = color;
+    c.lerp(ofColor(255, 255, 255, 255 - incrementer), incrementer/255);
+    ofSetColor(c);
+    //ofDrawEllipse(pos.x, pos.y, size.x, size.y);
+    ofTranslate(pos);
+    ofRotate(deg);
+    ofBeginShape();
+    vector<glm::vec2> points;
+    points.push_back(glm::vec2(0.0 - size.x, 0.0 - size.y));
+    points.push_back(glm::vec2(0.0 - size.x, 0.0 + size.y));
+    points.push_back(glm::vec2(0.0 + size.x, 0.0 + size.y));
+    points.push_back(glm::vec2(0.0 + size.x, 0.0 - size.y));
+    points.push_back(glm::vec2(0.0 - size.x, 0.0 - size.y));
+    points.push_back(glm::vec2(0.0 - size.x, 0.0 + size.y));
+    points.push_back(glm::vec2(0.0 + size.x, 0.0 + size.y));
+    ofCurveVertices(points);
+    ofEndShape();
+    ofPopMatrix();
     ofPopStyle();
 }
 
