@@ -18,7 +18,7 @@ void ofApp::setup(){
 		unsigned char g = number >> 8 & 0xFF;
 		unsigned char b = number & 0xFF;
 		ofColor color = ofColor(r, g, b);
-		color.setBrightness(222);
+		color.setBrightness(200);
 		Flower flower = Flower(color);
 		flowers.push_back(flower);
 	}
@@ -38,4 +38,11 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
 	incrementer = (incrementer + 1) % flowers.size();
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key){
+	if (key == ' ') {
+		incrementer = (incrementer + 1) % flowers.size();
+	}
 }

@@ -11,15 +11,15 @@ Flower::Flower(ofColor _color){
 	color = _color;
 	savedTime = ofGetElapsedTimeMillis();
 	// Create ten petals to start
-	makeNewPetals(3);
+	// makeNewPetals(3);
 }
 
 //--------------------------------------------------------------
 void Flower::update(){
-	if (ofGetElapsedTimeMillis() - savedTime >= 1000) {
+	if (ofGetElapsedTimeMillis() - savedTime >= 500) {
 		savedTime = ofGetElapsedTimeMillis();
 		// make three new petals
-		makeNewPetals(3);
+		makeNewPetals((int)ofRandom(3, 6));
 	}
 	for (int i = 0; i < petals.size(); i++) {
 		petals[i].update();
@@ -39,15 +39,11 @@ void Flower::draw(){
 }
 
 void Flower::makeNewPetals(int newPetals) {
+	float degreeSlice = 360/newPetals;
+	float degreeIncrementer = ofRandom(-3, 3);
 	for (int i = 0; i < newPetals; i++) {
-		glm::vec2 pos, vel;
-		pos.x = ofGetWidth()/2;
-		pos.y = ofGetHeight()/2;
-        float ranValForCircle = ofRandom(0, 6.28);
-        float ranValForSpread = ofRandom(0.1, 0.2);
-        vel.x = sin(ranValForCircle) * ranValForSpread;
-        vel.y = cos(ranValForCircle) * ranValForSpread;
-        Petal petal = Petal(pos, vel, color);
+        float deg = i * degreeSlice;
+        Petal petal = Petal(color, deg, degreeIncrementer);
         petals.push_back(petal);
 	}
 }

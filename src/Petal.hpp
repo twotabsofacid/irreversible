@@ -5,13 +5,14 @@ class Petal {
 
     public:
         Petal();
-        Petal(glm::vec2 _pos, glm::vec2 _vel, ofColor _color);
+        Petal(ofColor _color, float _deg, float _degreeIncrementer);
         void addForce(glm::vec2 force);
         void update();
         void draw();
         float getIncrementer();
 
-        glm::vec2 pos, vel, acc, size;
+        glm::vec2 size, noiseySize;
+        float deg, degreeIncrementer;
         ofColor color;
 
         float incrementer = 0;
