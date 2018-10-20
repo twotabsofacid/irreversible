@@ -15,5 +15,7 @@ class Flower {
 
 		float savedTime;
 
+		const int lifespan = 300;
+
 		vector<Petal> petals;
 };

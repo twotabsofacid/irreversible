@@ -25,7 +25,7 @@ void Flower::update(){
 		petals[i].update();
 	}
 	for (int j = 0; j < petals.size(); j++) {
-		if (petals[j].getIncrementer() >= 300) {
+		if (petals[j].getIncrementer() >= lifespan) {
 			petals.erase(petals.begin() + j);
 		}
 	}
@@ -43,7 +43,7 @@ void Flower::makeNewPetals(int newPetals) {
 	float degreeIncrementer = ofRandom(-1, 1);
 	for (int i = 0; i < newPetals; i++) {
         float deg = i * degreeSlice;
-        Petal petal = Petal(color, deg, degreeIncrementer);
+        Petal petal = Petal(color, deg, degreeIncrementer, lifespan);
         petals.push_back(petal);
 	}
 }
