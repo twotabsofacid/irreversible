@@ -1,12 +1,15 @@
 #include "Petal.hpp"
 
+float xIncrementer = 1.0;
+float yIncrementer = 3.0;
+
 // Use an initializer list
 Petal::Petal(){
 }
 
 // Overload the constructor
 Petal::Petal(ofColor _color, float _deg, float _degreeIncrementer){
-    size = glm::vec2(1, 2.5);
+    size = glm::vec2(xIncrementer, yIncrementer);
     color = _color;
     deg = _deg;
     degreeIncrementer = _degreeIncrementer;
@@ -15,10 +18,15 @@ Petal::Petal(ofColor _color, float _deg, float _degreeIncrementer){
 }
 
 void Petal::update(){
-    noiseySize.x = ofNoise(ofGetElapsedTimef());
-    noiseySize.y = ofNoise(ofGetElapsedTimef() + 100);
-    size.x += 1 + noiseySize.x;
-    size.y += 2.5 + noiseySize.y;
+    noiseySize.x = ofNoise(ofGetElapsedTimef()) - 0.5;
+    noiseySize.y = ofNoise(ofGetElapsedTimef() + 100) - 0.5;
+    if (size.x > 300) {
+        size.x -= xIncrementer + noiseySize.x;
+        size.y -= yIncrementer + noiseySize.y;
+    } else {
+        size.x += xIncrementer + noiseySize.x;
+        size.y += yIncrementer + noiseySize.y;
+    }
     deg += degreeIncrementer;
 }
 
