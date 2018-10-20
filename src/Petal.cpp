@@ -26,9 +26,11 @@ void Petal::draw(){
     ofPushStyle();
     ofPushMatrix();
     incrementer += 1;
-    incrementer = ofClamp(incrementer, 0, 255);
+    incrementer = ofClamp(incrementer, 0, 300);
     ofColor c = color;
-    c.lerp(ofColor(255, 255, 255), incrementer/255);
+    if (incrementer > 50) {
+        c.lerp(ofColor(0, 0, 0), (incrementer - 50)/250);
+    }
     ofSetColor(c);
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     ofRotate(deg);

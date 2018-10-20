@@ -25,7 +25,7 @@ void Flower::update(){
 		petals[i].update();
 	}
 	for (int j = 0; j < petals.size(); j++) {
-		if (petals[j].getIncrementer() >= 255) {
+		if (petals[j].getIncrementer() >= 300) {
 			petals.erase(petals.begin() + j);
 		}
 	}

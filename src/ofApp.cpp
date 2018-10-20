@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	ofBackground(255);
+	ofBackground(0);
     ofSetCircleResolution(100);
 	incrementer = 0;
 	ofBuffer buffer = ofBufferFromFile("mao-swimming-colors.txt");
