@@ -14,6 +14,8 @@ class ofApp : public ofBaseApp{
 
 		vector<Flower> flowers;
 
+		float petalScaler;
+
 		int incrementer;
 		
 };

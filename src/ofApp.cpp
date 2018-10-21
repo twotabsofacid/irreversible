@@ -1,5 +1,9 @@
 #include "ofApp.h"
 
+ofSerial mySerial;
+int baud = 57600;
+int myByte = 0;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofBackground(0);
@@ -7,6 +11,7 @@ void ofApp::setup(){
 	incrementer = 0;
 	ofBuffer buffer = ofBufferFromFile("mao-swimming-colors.txt");
 	vector<string> linesOfTheFile;
+	petalScaler = 1.0;
 	for (auto line : buffer.getLines()){
 	    linesOfTheFile.push_back(line);
 	}
@@ -23,11 +28,25 @@ void ofApp::setup(){
 		flowers.push_back(flower);
 	}
 	cout << flowers.size() << endl;
+	mySerial.listDevices();  
+	vector <ofSerialDeviceInfo> deviceList = mySerial.getDeviceList();  
+	mySerial.setup(0, baud); //open the first device
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	flowers[incrementer].update();
+	// Update the scaler value
+	int myByte = mySerial.readByte();
+	if ( myByte == OF_SERIAL_NO_DATA ) {
+		cout << "no data was read" << endl;
+	} else if ( myByte == OF_SERIAL_ERROR ) {
+		cout << "an error occured" << endl;
+	} else {
+		cout << myByte << endl;
+		petalScaler = ((float)myByte / 100) + 1;
+	}
+	//cout << petalScaler << endl;
+	flowers[incrementer].update(petalScaler);
 }
 
 //--------------------------------------------------------------

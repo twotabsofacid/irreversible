@@ -5,7 +5,7 @@ class Petal {
 
     public:
         Petal();
-        Petal(ofColor _color, float _deg, float _degreeIncrementer, int _lifespan);
+        Petal(ofColor _color, float _deg, float _degreeIncrementer, int _lifespan, float _petalScaler);
         void addForce(glm::vec2 force);
         void update();
         void draw();
@@ -15,6 +15,8 @@ class Petal {
         float deg, degreeIncrementer;
         int lifespan;
         ofColor color;
+
+        float width, height, petalScaler;
 
         float xIncrementer = 1.0;
         float yIncrementer = 3.0;

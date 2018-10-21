@@ -6,14 +6,14 @@ class Flower {
 	public:
 		Flower();
 		Flower(ofColor _color);
-		void update();
+		void update(float _scaler);
 		void draw();
 		void makeNewPetals(int newPetals);
 
 		glm::vec2 pos;
 		ofColor color;
 
-		float savedTime;
+		float savedTime, petalScaler;
 
 		const int lifespan = 300;
 
