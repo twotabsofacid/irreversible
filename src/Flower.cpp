@@ -17,7 +17,7 @@ Flower::Flower(ofColor _color){
 //--------------------------------------------------------------
 void Flower::update(float _scaler){
 	petalScaler = _scaler;
-	if (ofGetElapsedTimeMillis() - savedTime >= 500) {
+	if (ofGetElapsedTimeMillis() - savedTime >= 1000) {
 		savedTime = ofGetElapsedTimeMillis();
 		// make three new petals
 		int numPetals = (int)ofRandom(3, 8);

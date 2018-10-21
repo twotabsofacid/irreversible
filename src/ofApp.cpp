@@ -42,10 +42,8 @@ void ofApp::update(){
 	} else if ( myByte == OF_SERIAL_ERROR ) {
 		cout << "an error occured" << endl;
 	} else {
-		cout << myByte << endl;
 		petalScaler = ((float)myByte / 100) + 1;
 	}
-	//cout << petalScaler << endl;
 	flowers[incrementer].update(petalScaler);
 }
 
