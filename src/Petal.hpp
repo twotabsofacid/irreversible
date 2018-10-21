@@ -18,8 +18,8 @@ class Petal {
 
         float width, height, petalScaler;
 
-        float xIncrementer = 1.0;
-        float yIncrementer = 3.0;
+        float xIncrementer = 0.75;
+        float yIncrementer = 2.25;
 
         float incrementer = 0;
         

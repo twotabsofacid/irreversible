@@ -36,7 +36,10 @@ void Flower::update(float _scaler){
 //--------------------------------------------------------------
 void Flower::draw(){
 	for (int i = 0; i < petals.size(); i++) {
+		ofPushMatrix();
+		ofTranslate(pos.x, pos.y);
 		petals[i].draw();
+		ofPopMatrix();
 	}
 }
 

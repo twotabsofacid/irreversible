@@ -44,6 +44,7 @@ void ofApp::update(){
 	} else {
 		petalScaler = ((float)myByte / 100) + 1;
 	}
+	cout << petalScaler << endl;
 	flowers[incrementer].update(petalScaler);
 }
 
