@@ -19,7 +19,8 @@ void Flower::update(){
 	if (ofGetElapsedTimeMillis() - savedTime >= 500) {
 		savedTime = ofGetElapsedTimeMillis();
 		// make three new petals
-		makeNewPetals((int)ofRandom(3, 6));
+		int numPetals = (int)ofRandom(3, 8);
+		makeNewPetals(numPetals);
 	}
 	for (int i = 0; i < petals.size(); i++) {
 		petals[i].update();
@@ -39,7 +40,7 @@ void Flower::draw(){
 }
 
 void Flower::makeNewPetals(int newPetals) {
-	float degreeSlice = 360/newPetals;
+	float degreeSlice = 180/newPetals;
 	float degreeIncrementer = ofRandom(-1, 1);
 	for (int i = 0; i < newPetals; i++) {
         float deg = i * degreeSlice;
