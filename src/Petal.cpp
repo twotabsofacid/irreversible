@@ -32,16 +32,13 @@ void Petal::update(){
 
 void Petal::draw(){
     ofPushStyle();
-    ofPushMatrix();
     ofColor c = color;
     if (incrementer > 50) {
         c.lerp(ofColor(0, 0, 0), (incrementer - 50)/(lifespan - 50));
     }
     ofSetColor(c);
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     ofRotate(deg);
     ofDrawEllipse(0, 0, size.x, size.y);
-    ofPopMatrix();
     ofPopStyle();
 }
 
