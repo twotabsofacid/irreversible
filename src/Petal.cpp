@@ -16,8 +16,8 @@ Petal::Petal(ofColor _color, float _deg, float _degreeIncrementer, int _lifespan
 }
 
 void Petal::update(){
-    noiseySize.x = ofNoise(ofGetElapsedTimef()) - 0.5;
-    noiseySize.y = ofNoise(ofGetElapsedTimef() + 100) - 0.5;
+    noiseySize.x = (ofNoise(ofGetElapsedTimef()) - 0.5) * 2;
+    noiseySize.y = (ofNoise(ofGetElapsedTimef() + 100) - 0.5) * 2;
     incrementer += 1;
     incrementer = ofClamp(incrementer, 0, lifespan);
     if (incrementer > lifespan/1.5) {
