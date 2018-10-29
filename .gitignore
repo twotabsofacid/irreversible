@@ -133,4 +133,5 @@ Desktop.ini
 #########################
 # project specific
 #########################
-bin/data/input.txt
+bin/data/mao.txt
+bin/data/ice.txt
