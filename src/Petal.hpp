@@ -15,6 +15,7 @@ class Petal {
         float deg, degreeIncrementer;
         int lifespan;
         ofColor color;
+        ofColor newColor;
 
         float xIncrementer = 1.0;
         float yIncrementer = 3.0;

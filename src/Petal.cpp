@@ -8,6 +8,7 @@ Petal::Petal(){
 Petal::Petal(ofColor _color, float _deg, float _degreeIncrementer, int _lifespan){
     size = glm::vec2(xIncrementer, yIncrementer);
     color = _color;
+    newColor = _color;
     deg = _deg;
     degreeIncrementer = _degreeIncrementer;
     lifespan = _lifespan;
@@ -33,10 +34,15 @@ void Petal::update(){
 void Petal::draw(){
     ofPushStyle();
     ofColor c = color;
-    if (incrementer > 50) {
-        c.lerp(ofColor(0, 0, 0), (incrementer - 50)/(lifespan - 50));
+    c.setBrightness(240);
+    if (incrementer > lifespan * 0.75) {
+        newColor = c;
+        newColor.lerp(ofColor(0, 0, 0), (incrementer - lifespan * 0.75)/(lifespan * 0.25));
+    } else {
+        newColor = color;
+        newColor.lerp(c, incrementer/(lifespan * 0.75));
     }
-    ofSetColor(c);
+    ofSetColor(newColor);
     ofRotate(deg);
     ofDrawEllipse(0, 0, size.x, size.y);
     ofPopStyle();
