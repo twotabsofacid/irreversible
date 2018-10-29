@@ -21,7 +21,7 @@ void Petal::update(){
     noiseySize.y = (ofNoise(ofGetElapsedTimef() + 100) - 0.5) * 2;
     incrementer += 1;
     incrementer = ofClamp(incrementer, 0, lifespan);
-    if (incrementer > lifespan/1.5) {
+    if (incrementer > lifespan * 0.75) {
         size.x -= xIncrementer/8 + noiseySize.x;
         size.y -= yIncrementer/8 + noiseySize.y;
     } else {
@@ -40,7 +40,7 @@ void Petal::draw(){
         newColor.lerp(ofColor(0, 0, 0), (incrementer - lifespan * 0.75)/(lifespan * 0.25));
     } else {
         newColor = color;
-        newColor.lerp(c, incrementer/(lifespan * 0.75));
+        newColor.lerp(c, incrementer/(lifespan * 0.75 - 1));
     }
     ofSetColor(newColor);
     ofRotate(deg);
