@@ -5,7 +5,7 @@ void ofApp::setup(){
 	ofBackground(0);
     ofSetCircleResolution(100);
 	incrementer = 0;
-	ofBuffer buffer = ofBufferFromFile("mao-swimming-colors.txt");
+	ofBuffer buffer = ofBufferFromFile("colors.txt");
 	vector<string> linesOfTheFile;
 	for (auto line : buffer.getLines()){
 	    linesOfTheFile.push_back(line);
@@ -43,6 +43,13 @@ void ofApp::mouseReleased(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
 	if (key == ' ') {
+		flowers[incrementer].deletePetals();
+		incrementer = (incrementer + 1) % flowers.size();
+	} else if (key == OF_KEY_LEFT) {
+		flowers[incrementer].deletePetals();
+		incrementer = (incrementer - 1) % flowers.size();
+	} else if (key == OF_KEY_RIGHT) {
+		flowers[incrementer].deletePetals();
 		incrementer = (incrementer + 1) % flowers.size();
 	}
 }

@@ -9,6 +9,7 @@ class Flower {
 		void update();
 		void draw();
 		void makeNewPetals(int newPetals);
+		void deletePetals();
 
 		glm::vec2 pos;
 		ofColor color;

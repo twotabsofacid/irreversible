@@ -42,6 +42,7 @@ void Flower::draw(){
 	}
 }
 
+//--------------------------------------------------------------
 void Flower::makeNewPetals(int newPetals) {
 	float degreeSlice = 180/newPetals;
 	float degreeIncrementer = ofRandom(-1, 1);
@@ -51,3 +52,9 @@ void Flower::makeNewPetals(int newPetals) {
         petals.push_back(petal);
 	}
 }
+
+//--------------------------------------------------------------
+void Flower::deletePetals() {
+	petals.clear();
+}
+
