@@ -5,7 +5,7 @@ void ofApp::setup(){
 	ofBackground(0);
     ofSetCircleResolution(100);
 	incrementer = 0;
-	ofBuffer buffer = ofBufferFromFile("colors.txt");
+	ofBuffer buffer = ofBufferFromFile("output.txt");
 	vector<string> linesOfTheFile;
 	for (auto line : buffer.getLines()){
 	    linesOfTheFile.push_back(line);

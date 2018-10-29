@@ -1,0 +1,20 @@
+{
+  "name": "color_flowers",
+  "version": "1.0.0",
+  "description": "> Some art code :joy:",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bin/scripts/text-to-color.js && make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skiprox/irreversible.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skiprox/irreversible/issues"
+  },
+  "homepage": "https://github.com/skiprox/irreversible#readme"
+}

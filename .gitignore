@@ -129,3 +129,8 @@ Desktop.ini
 
 .mailmap
 /apps*/
+
+#########################
+# project specific
+#########################
+bin/data/input.txt
