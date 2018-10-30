@@ -10,8 +10,6 @@ Flower::Flower(ofColor _color){
 	pos = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
 	color = _color;
 	savedTime = ofGetFrameNum();
-	// Create ten petals to start
-	// makeNewPetals(3);
 }
 
 //--------------------------------------------------------------
