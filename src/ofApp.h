@@ -9,7 +9,6 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
-		void mouseReleased(int x, int y, int button);
 		void keyReleased(int key);
 
 		vector<Flower> flowers;

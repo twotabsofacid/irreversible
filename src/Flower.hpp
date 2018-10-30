@@ -14,6 +14,8 @@ class Flower {
 		glm::vec2 pos;
 		ofColor color;
 
+		bool shouldCreateNew = true;
+
 		float savedTime;
 
 		const int lifespan = 300;

@@ -27,6 +27,11 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	if (ofGetElapsedTimeMillis() - savedTime >= 16000) {
+		flowers[incrementer].shouldCreateNew = false;
+	} else {
+		flowers[incrementer].shouldCreateNew = true;
+	}
 	// Every twenty seconds get rid of the flower and draw a new one
 	if (ofGetElapsedTimeMillis() - savedTime >= 20000) {
 		savedTime = ofGetElapsedTimeMillis();
@@ -40,11 +45,6 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	flowers[incrementer].draw();
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-	incrementer = (incrementer + 1) % flowers.size();
 }
 
 //--------------------------------------------------------------

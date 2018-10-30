@@ -16,7 +16,7 @@ Flower::Flower(ofColor _color){
 
 //--------------------------------------------------------------
 void Flower::update(){
-	if (ofGetElapsedTimeMillis() - savedTime >= 1000) {
+	if (shouldCreateNew && ofGetElapsedTimeMillis() - savedTime >= 1000) {
 		savedTime = ofGetElapsedTimeMillis();
 		// make three new petals
 		int numPetals = (int)ofRandom(3, 8);
