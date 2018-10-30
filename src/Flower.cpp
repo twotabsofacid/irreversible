@@ -9,15 +9,15 @@ Flower::Flower(){
 Flower::Flower(ofColor _color){
 	pos = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
 	color = _color;
-	savedTime = ofGetElapsedTimeMillis();
+	savedTime = ofGetFrameNum();
 	// Create ten petals to start
 	// makeNewPetals(3);
 }
 
 //--------------------------------------------------------------
 void Flower::update(){
-	if (shouldCreateNew && ofGetElapsedTimeMillis() - savedTime >= 1000) {
-		savedTime = ofGetElapsedTimeMillis();
+	if (shouldCreateNew && ofGetFrameNum() - savedTime >= 60) {
+		savedTime = ofGetFrameNum();
 		// make three new petals
 		int numPetals = (int)ofRandom(3, 8);
 		makeNewPetals(numPetals);
