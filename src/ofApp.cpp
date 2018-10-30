@@ -5,6 +5,7 @@ void ofApp::setup(){
 	ofBackground(0);
     ofSetCircleResolution(100);
 	incrementer = 0;
+	savedTime = ofGetElapsedTimeMillis();
 	ofBuffer buffer = ofBufferFromFile("output.txt");
 	vector<string> linesOfTheFile;
 	for (auto line : buffer.getLines()){
@@ -26,7 +27,14 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	flowers[incrementer].update();
+	// Every twenty seconds get rid of the flower and draw a new one
+	if (ofGetElapsedTimeMillis() - savedTime >= 20000) {
+		savedTime = ofGetElapsedTimeMillis();
+		flowers[incrementer].deletePetals();
+		incrementer = (incrementer + 1) % flowers.size();
+	} else {
+		flowers[incrementer].update();
+	}
 }
 
 //--------------------------------------------------------------
@@ -41,10 +49,8 @@ void ofApp::mouseReleased(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-	if (key == ' ') {
-		flowers[incrementer].deletePetals();
-		incrementer = (incrementer + 1) % flowers.size();
-	} else if (key == OF_KEY_LEFT) {
+	savedTime = ofGetElapsedTimeMillis();
+	if (key == OF_KEY_LEFT) {
 		flowers[incrementer].deletePetals();
 		incrementer = (incrementer - 1) % flowers.size();
 	} else if (key == OF_KEY_RIGHT) {
