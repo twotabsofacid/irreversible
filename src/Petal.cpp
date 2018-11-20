@@ -45,8 +45,14 @@ void Petal::draw(){
     ofSetColor(newColor);
     ofRotate(deg);
     // Draw the shape here
-    // ofDrawEllipse(0, 0, size.x, size.y);
     ofPath path;
+    // path.moveTo(0, 0);
+    // path.curveTo(0, 0);
+    // path.curveTo(-size.x/2, size.y * 0.8);
+    // path.curveTo(0, size.y);
+    // path.curveTo(size.x/2, size.y * 0.8);
+    // path.curveTo(0, 0);
+    // path.close();
     path.arc(0, size.y/2, size.x, size.y, 0, 360);
     path.setFillColor(newColor);
     path.setCircleResolution(100);
