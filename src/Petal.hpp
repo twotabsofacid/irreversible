@@ -17,8 +17,8 @@ class Petal {
         ofColor color;
         ofColor newColor;
 
-        float xIncrementer = 1.0;
-        float yIncrementer = 3.0;
+        float xIncrementer = 0.3;
+        float yIncrementer = 0.9;
 
         float incrementer = 0;
         

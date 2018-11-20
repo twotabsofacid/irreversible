@@ -44,7 +44,13 @@ void Petal::draw(){
     }
     ofSetColor(newColor);
     ofRotate(deg);
-    ofDrawEllipse(0, 0, size.x, size.y);
+    // Draw the shape here
+    // ofDrawEllipse(0, 0, size.x, size.y);
+    ofPath path;
+    path.arc(0, size.y/2, size.x, size.y, 0, 360);
+    path.setFillColor(newColor);
+    path.setCircleResolution(100);
+    path.draw();
     ofPopStyle();
 }
 
