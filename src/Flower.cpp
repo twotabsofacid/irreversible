@@ -17,7 +17,7 @@ void Flower::update(){
 	if (shouldCreateNew && ofGetFrameNum() - savedTime >= 60) {
 		savedTime = ofGetFrameNum();
 		// make three new petals
-		int numPetals = (int)ofRandom(6, 10);
+		int numPetals = (int)ofRandom(8, 12);
 		makeNewPetals(numPetals);
 	}
 	for (int i = 0; i < petals.size(); i++) {
