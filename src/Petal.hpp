@@ -17,11 +17,13 @@ class Petal {
         ofColor color;
         ofColor newColor;
 
-        float xIncrementer = 0.5;
-        float yIncrementer = 1.5;
+        float xIncrementer = 0.6;
+        float yIncrementer = 1.8;
 
         float noiseIncrementer = 1.0;
 
         float incrementer = 0;
+
+        ofShader shader;
         
 };

@@ -44,7 +44,7 @@ void Flower::draw(){
 void Flower::makeNewPetals(int newPetals) {
 	float degreeSlice = 360/newPetals;
 	float degreeIncrementer = ofRandom(-1, 1);
-	float petalScaler = ofRandom(0.4, 0.6);
+	float petalScaler = ofRandom(0.2, 0.5);
 	for (int i = 0; i < newPetals; i++) {
         float deg = i * degreeSlice;
         Petal petal = Petal(color, deg, degreeIncrementer, petalScaler, lifespan);
