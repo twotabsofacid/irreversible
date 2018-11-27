@@ -23,7 +23,5 @@ class Petal {
         float noiseIncrementer = 1.0;
 
         float incrementer = 0;
-
-        ofShader shader;
         
 };

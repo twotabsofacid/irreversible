@@ -21,4 +21,8 @@ class Flower {
 		const int lifespan = 300;
 
 		vector<Petal> petals;
+
+		ofShader shader;
+        ofFbo fbo;
+
 };

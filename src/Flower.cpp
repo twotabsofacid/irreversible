@@ -10,6 +10,8 @@ Flower::Flower(ofColor _color){
 	pos = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
 	color = _color;
 	savedTime = ofGetFrameNum();
+	shader.load("","shaderFrag.c");
+    fbo.allocate(ofGetWidth(), ofGetHeight());
 }
 
 //--------------------------------------------------------------
@@ -33,10 +35,16 @@ void Flower::update(){
 //--------------------------------------------------------------
 void Flower::draw(){
 	for (int i = 0; i < petals.size(); i++) {
+		fbo.begin();
 		ofPushMatrix();
 		ofTranslate(pos.x, pos.y);
 		petals[i].draw();
 		ofPopMatrix();
+		fbo.end();
+	    shader.begin();
+	    shader.setUniform1f("u_time", ofGetElapsedTimef());
+	    shader.end();
+	    fbo.draw(0, 0);
 	}
 }
 

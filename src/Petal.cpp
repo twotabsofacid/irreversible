@@ -15,12 +15,12 @@ Petal::Petal(ofColor _color, float _deg, float _degreeIncrementer, float _petalS
     lifespan = _lifespan;
     noiseySize.x = ofNoise(ofGetElapsedTimef());
     noiseySize.y = ofNoise(ofGetElapsedTimef() + 100);
-    shader.load("","shader.frag");
 }
 
 void Petal::update(){
-    noiseySize.x = (ofSignedNoise(ofGetElapsedTimef())) * noiseIncrementer;
-    noiseySize.y = (ofSignedNoise(ofGetElapsedTimef() + 100)) * noiseIncrementer;
+    float time = ofGetElapsedTimef();
+    noiseySize.x = (ofSignedNoise(time)) * noiseIncrementer;
+    noiseySize.y = (ofSignedNoise(time + 100)) * noiseIncrementer;
     incrementer += 1;
     incrementer = ofClamp(incrementer, 0, lifespan);
     if (incrementer > lifespan * 0.75) {
@@ -55,14 +55,9 @@ void Petal::draw(){
     path.curveTo(size.x, size.y * petalScaler);
     path.curveTo(0, 0);
     path.close();
-    //path.arc(0, size.y/2, size.x, size.y, 0, 360);
-    // shader.begin();
-    // shader.setUniform1f("u_time", ofGetElapsedTimef());
-    // shader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
     path.setFillColor(newColor);
     path.setCircleResolution(100);
     path.draw();
-    // shader.end();
     ofPopStyle();
 }
 
