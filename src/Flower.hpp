@@ -22,7 +22,4 @@ class Flower {
 
 		vector<Petal> petals;
 
-		ofShader shader;
-        ofFbo fbo;
-
 };

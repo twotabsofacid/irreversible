@@ -15,6 +15,7 @@ Petal::Petal(ofColor _color, float _deg, float _degreeIncrementer, float _petalS
     lifespan = _lifespan;
     noiseySize.x = ofNoise(ofGetElapsedTimef());
     noiseySize.y = ofNoise(ofGetElapsedTimef() + 100);
+    shader.load("shader.vert","shader.frag");
 }
 
 void Petal::update(){
@@ -57,7 +58,10 @@ void Petal::draw(){
     path.close();
     path.setFillColor(newColor);
     path.setCircleResolution(100);
+    shader.begin();
+    shader.setUniform1f("u_incrementer", float(incrementer));
     path.draw();
+    shader.end();
     ofPopStyle();
 }
 
