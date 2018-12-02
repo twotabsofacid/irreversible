@@ -15,11 +15,10 @@ void ofApp::setup(){
 		string hexstring = linesOfTheFile[i];
 		int number = (int) strtol( &hexstring[0], NULL, 16);
 		// Split them up into r, g, b values
-		unsigned char r = number >> 16;
-		unsigned char g = number >> 8 & 0xFF;
-		unsigned char b = number & 0xFF;
-		ofColor color = ofColor(r, g, b);
-		Flower flower = Flower(color);
+		int r = number >> 16;
+		int g = number >> 8 & 0xFF;
+		int b = number & 0xFF;
+		Flower flower = Flower(r, g, b);
 		flowers.push_back(flower);
 	}
 	cout << flowers.size() << endl;

@@ -5,14 +5,14 @@
 class Flower {
 	public:
 		Flower();
-		Flower(ofColor _color);
+		Flower(int _r, int _g, int _b);
 		void update();
 		void draw();
 		void makeNewPetals(int newPetals);
 		void deletePetals();
 
 		glm::vec2 pos;
-		ofColor color;
+		int r, g, b;
 
 		bool shouldCreateNew = true;
 
