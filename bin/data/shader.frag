@@ -13,7 +13,7 @@ void main() {
     float newR;
     float newG;
     float newB;
-    float len = distance(vertexCoordVarying, vec2(0.5, 0.0));
+    float len = distance(vertexCoordVarying.y, 0.0);
     float maxVal = max(max(u_r, u_g), u_b);
     float multiplier = (1/maxVal) * len/400;
     if (u_incrementer > u_lifespan * 0.75) {
