@@ -16,5 +16,7 @@ class ofApp : public ofBaseApp{
 		float savedTime;
 
 		int incrementer;
+
+		ofEasyCam cam;
 		
 };

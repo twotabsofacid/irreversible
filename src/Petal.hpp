@@ -6,10 +6,10 @@ class Petal {
     public:
         Petal();
         Petal(int _r, int _g, int _b, float _deg, float _degreeIncrementer, float _petalScaler, int _lifespan);
-        void addForce(glm::vec2 force);
         void update();
         void draw();
         float getIncrementer();
+        void drawPath();
 
         glm::vec2 size, noiseySize;
         float deg, degreeIncrementer, petalScaler;
@@ -23,5 +23,9 @@ class Petal {
         float incrementer = 0;
 
         ofShader shader;
+
+        ofPath path;
+
+        ofMesh mesh;
         
 };

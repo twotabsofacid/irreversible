@@ -13,9 +13,9 @@ void main() {
     // manipulate depth based on sin wave
     //  wave travels along x
     
-    // float x = pos.x * 15.f;  // arbitrary scale
+    float x = pos.x * 15.f;  // arbitrary scale
     
-    // pos.y += sin( x + u_time ) * 10.f;
+    pos.z += sin( x + u_time ) * 1.f;
     
     // set vertex screen position
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;

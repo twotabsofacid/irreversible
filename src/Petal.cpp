@@ -38,15 +38,9 @@ void Petal::update(){
 void Petal::draw(){
     ofPushStyle();
     ofRotate(deg);
-    // Draw the shape here
-    ofPath path;
-    path.moveTo(0, 0);
-    path.curveTo(0, 0);
-    path.curveTo(-size.x, size.y * petalScaler);
-    path.curveTo(0, size.y);
-    path.curveTo(size.x, size.y * petalScaler);
-    path.curveTo(0, 0);
-    path.close();
+    // Draw the path
+    drawPath();
+    // Begin the shader, assign variables
     shader.begin();
     shader.setUniform1f("u_time", ofGetElapsedTimef());
     shader.setUniform1f("u_incrementer", incrementer);
@@ -54,14 +48,26 @@ void Petal::draw(){
     shader.setUniform1f("u_r", r/255.0);
     shader.setUniform1f("u_g", g/255.0);
     shader.setUniform1f("u_b", b/255.0);
-    path.setCircleResolution(100);
-    ofMesh mesh = path.getTessellation();
+    // Create the mesh based on the ofPath object, draw it
+    mesh = path.getTessellation();
     mesh.draw();
-    //path.draw();
+    // End the shader
     shader.end();
     ofPopStyle();
 }
 
 float Petal::getIncrementer(){
     return incrementer;
+}
+
+void Petal::drawPath(){
+    path.clear();
+    path.moveTo(0, 0);
+    path.curveTo(0, 0);
+    path.curveTo(-size.x, size.y * petalScaler);
+    path.curveTo(0, size.y);
+    path.curveTo(size.x, size.y * petalScaler);
+    path.curveTo(0, 0);
+    path.close();
+    path.setCircleResolution(100);
 }
