@@ -15,8 +15,8 @@ class Petal {
         float deg, degreeIncrementer, petalScaler;
         int lifespan, r, g, b;
 
-        float xIncrementer = 0.6;
-        float yIncrementer = 1.8;
+        float xIncrementer = 0.7;
+        float yIncrementer = 2.1;
 
         float noiseIncrementer = 1.0;
 

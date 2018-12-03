@@ -1,10 +1,11 @@
 #version 120
 
-varying vec2 texCoordVarying;
+varying vec2 vertexCoordVarying;
+varying float len;
 uniform float u_time;
 
 void main() {
-	texCoordVarying = gl_MultiTexCoord0.xy;
+	vertexCoordVarying = gl_Vertex.xy;
 	
 	// get vertex position
     vec4 pos = gl_Vertex;   // vec4 = x,y,z (and w...)
