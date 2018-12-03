@@ -13,7 +13,7 @@ void main() {
     // manipulate depth based on sin wave
     //  wave travels along x
     
-    // float x = texCoordVarying.x * 15.f;  // arbitrary scale
+    // float x = pos.x * 15.f;  // arbitrary scale
     
     // pos.y += sin( x + u_time ) * 10.f;
     

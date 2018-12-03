@@ -55,7 +55,9 @@ void Petal::draw(){
     shader.setUniform1f("u_g", g/255.0);
     shader.setUniform1f("u_b", b/255.0);
     path.setCircleResolution(100);
-    path.draw();
+    ofMesh mesh = path.getTessellation();
+    mesh.draw();
+    //path.draw();
     shader.end();
     ofPopStyle();
 }
