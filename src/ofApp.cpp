@@ -60,12 +60,14 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	cam.begin();
+	ofEnableDepthTest();
 	flowers[incrementer].draw();
 	ofPushStyle();
 	ofSetColor(currentColor);
 	ofDrawSphere(0, 0, 0, 36);
 	ofPopStyle();
 	cam.end();
+	ofDisableDepthTest();
 }
 
 //--------------------------------------------------------------

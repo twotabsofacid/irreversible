@@ -18,6 +18,8 @@ class Petal {
         float xIncrementer = 0.7;
         float yIncrementer = 2.1;
 
+        float zIndex = 0.0;
+
         float noiseIncrementer = 1.0;
 
         float incrementer = 0;

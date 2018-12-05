@@ -23,6 +23,7 @@ Petal::Petal(int _r, int _g, int _b, float _deg, float _degreeIncrementer, float
 void Petal::update(){
     noiseySize.x = (ofSignedNoise(ofGetElapsedTimef())) * noiseIncrementer;
     noiseySize.y = (ofSignedNoise(ofGetElapsedTimef() + 100)) * noiseIncrementer;
+    zIndex -= 1;
     incrementer += 1;
     incrementer = ofClamp(incrementer, 0, lifespan);
     if (incrementer > lifespan * 0.75) {
@@ -62,12 +63,17 @@ float Petal::getIncrementer(){
 
 void Petal::drawPath(){
     path.clear();
-    path.moveTo(0, 0);
-    path.curveTo(0, 0);
-    path.curveTo(-size.x, size.y * petalScaler);
-    path.curveTo(0, size.y);
-    path.curveTo(size.x, size.y * petalScaler);
-    path.curveTo(0, 0);
+    // Bottom
+    path.moveTo(0, 0, 0 + zIndex);
+    path.curveTo(0, 0, 0 + zIndex);
+    // Left side
+    path.curveTo(-size.x, size.y * petalScaler, -1 + zIndex);
+    // Top
+    path.curveTo(0, size.y, 0 + zIndex);
+    // Right size
+    path.curveTo(size.x, size.y * petalScaler, 1 + zIndex);
+    // Bottom again
+    path.curveTo(0, 0, 0 + zIndex);
     path.close();
     path.setCircleResolution(100);
 }

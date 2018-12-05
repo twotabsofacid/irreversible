@@ -15,10 +15,6 @@ void main() {
     // Should move all these calculations into shader
     vec3 new_rgb = vec3(0.f, 0.f, 0.f);
     float len = distance(vertexCoordVarying.xy, vec2(0.0, 0.0))/distance(vec2(u_sizeX, u_sizeY), vec2(0.0, 0.0));
-    float newGuyR = 0.f;
-    if (len > 1.0) {
-        float newGuyR = 1.f;
-    }
     float maxVal = max(max(u_rgb.r, u_rgb.g), u_rgb.b);
     float multiplier = (1/maxVal) * len;
     if (u_incrementer > u_lifespan * 0.75) {
