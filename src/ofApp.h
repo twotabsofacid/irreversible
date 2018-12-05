@@ -18,5 +18,7 @@ class ofApp : public ofBaseApp{
 		int incrementer;
 
 		ofEasyCam cam;
+
+		ofColor currentColor, storedColor;
 		
 };

@@ -42,12 +42,12 @@ void Petal::draw(){
     drawPath();
     // Begin the shader, assign variables
     shader.begin();
+    shader.setUniform1f("u_sizeX", size.x * 2.0);
+    shader.setUniform1f("u_sizey", size.y);
     shader.setUniform1f("u_time", ofGetElapsedTimef());
     shader.setUniform1f("u_incrementer", incrementer);
     shader.setUniform1f("u_lifespan", lifespan);
-    shader.setUniform1f("u_r", r/255.0);
-    shader.setUniform1f("u_g", g/255.0);
-    shader.setUniform1f("u_b", b/255.0);
+    shader.setUniform3f("u_rgb", glm::vec3(r/255.0, g/255.0, b/255.0));
     // Create the mesh based on the ofPath object, draw it
     mesh = path.getTessellation();
     mesh.draw();

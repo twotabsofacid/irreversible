@@ -1,29 +1,34 @@
 #version 120
 
+// Varying
+varying vec2 vertexCoordVarying;
+
+// Uniform
+uniform float u_sizeX;
+uniform float u_sizeY;
+uniform float u_time;
 uniform float u_incrementer;
 uniform float u_lifespan;
-uniform float u_r;
-uniform float u_g;
-uniform float u_b;
-
-varying vec2 vertexCoordVarying;
+uniform vec3 u_rgb;
 
 void main() {
     // Should move all these calculations into shader
-    float newR;
-    float newG;
-    float newB;
-    float len = distance(vertexCoordVarying.y, 0.0);
-    float maxVal = max(max(u_r, u_g), u_b);
-    float multiplier = (1/maxVal) * len/400;
-    if (u_incrementer > u_lifespan * 0.75) {
-        newR = mix(u_r * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));
-        newG = mix(u_g * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));
-        newB = mix(u_b * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));
-    } else {
-        newR = mix(u_r, u_r * multiplier, u_incrementer/(u_lifespan * 0.75 - 1));
-        newG = mix(u_g, u_g * multiplier, u_incrementer/(u_lifespan * 0.75 - 1));
-        newB = mix(u_b, u_b * multiplier, u_incrementer/(u_lifespan * 0.75 - 1));
+    vec3 new_rgb = vec3(0.f, 0.f, 0.f);
+    float len = distance(vertexCoordVarying.xy, vec2(0.0, 0.0))/distance(vec2(u_sizeX, u_sizeY), vec2(0.0, 0.0));
+    float newGuyR = 0.f;
+    if (len > 1.0) {
+        float newGuyR = 1.f;
     }
-    gl_FragColor = vec4(newR, newG, newB, 1.0);
+    float maxVal = max(max(u_rgb.r, u_rgb.g), u_rgb.b);
+    float multiplier = (1/maxVal) * len;
+    if (u_incrementer > u_lifespan * 0.75) {
+        new_rgb.r = mix(u_rgb.r * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));
+        new_rgb.g = mix(u_rgb.g * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));
+        new_rgb.b = mix(u_rgb.b * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));
+    } else {
+        new_rgb.r = mix(u_rgb.r, u_rgb.r * multiplier, u_incrementer/(u_lifespan * 0.75 - 1));
+        new_rgb.g = mix(u_rgb.g, u_rgb.g * multiplier, u_incrementer/(u_lifespan * 0.75 - 1));
+        new_rgb.b = mix(u_rgb.b, u_rgb.b * multiplier, u_incrementer/(u_lifespan * 0.75 - 1));
+    }
+    gl_FragColor = vec4(new_rgb, 1.0);
 }
