@@ -12,4 +12,4 @@ Randomly generated flowers whose colors are determined by text files. The text i
 
 ### To Run
 
-Clone the repo, then just run `npm install`, then `npm run start`, followed by `make RunRelease`. You'll need to have openFrameworks, Node, Npm, and Make installed to run.
+Clone the repo, change into the directory by doing `cd irreversible`, then just run `npm install`, then `npm run start`, followed by `make RunRelease`. You'll need to have openFrameworks, Node, Npm, and Make installed to run.
