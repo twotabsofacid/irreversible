@@ -50,7 +50,8 @@ void Petal::draw(){
     shader.setUniform1f("u_lifespan", lifespan);
     shader.setUniform3f("u_rgb", glm::vec3(r/255.0, g/255.0, b/255.0));
     // Create the mesh based on the ofPath object, draw it
-    mesh = path.getTessellation();
+    vector<ofPolyline> lines = path.getOutline();
+    mesh.triangulate(lines[0], 28, -1);
     mesh.draw();
     // End the shader
     shader.end();

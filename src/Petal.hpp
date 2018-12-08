@@ -1,5 +1,6 @@
 #pragma once
 #include "ofMain.h"
+#include "ofxTriangleMesh.h"
 
 class Petal {
 
@@ -28,6 +29,6 @@ class Petal {
 
         ofPath path;
 
-        ofMesh mesh;
+        ofxTriangleMesh mesh;
         
 };
