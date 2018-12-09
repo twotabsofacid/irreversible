@@ -39,8 +39,8 @@ void Petal::update(){
 void Petal::draw(){
     ofPushStyle();
     ofRotate(deg);
-    // Draw the path
-    drawPath();
+    // Draw the line
+    drawLine();
     // Begin the shader, assign variables
     shader.begin();
     shader.setUniform1f("u_sizeX", size.x * 2.0);
@@ -50,9 +50,8 @@ void Petal::draw(){
     shader.setUniform1f("u_lifespan", lifespan);
     shader.setUniform1f("u_zIndex", zIndex);
     shader.setUniform3f("u_rgb", glm::vec3(r/255.0, g/255.0, b/255.0));
-    // Create the mesh based on the ofPath object, draw it
-    vector<ofPolyline> lines = path.getOutline();
-    mesh.triangulate(lines[0], 28, -1);
+    // Create the mesh based on the ofPolyline object, draw it
+    mesh.triangulate(line, 28, -1);
     mesh.draw();
     // End the shader
     shader.end();
@@ -63,19 +62,18 @@ float Petal::getIncrementer(){
     return incrementer;
 }
 
-void Petal::drawPath(){
-    path.clear();
+void Petal::drawLine(){
+    line.clear();
     // Bottom
-    path.moveTo(0, 0);
-    path.curveTo(0, 0);
+    line.addVertex(0, 0);
+    line.curveTo(0, 0);
     // Left side
-    path.curveTo(-size.x, size.y * petalScaler);
+    line.curveTo(-size.x, size.y * petalScaler);
     // Top
-    path.curveTo(0, size.y);
+    line.curveTo(0, size.y);
     // Right size
-    path.curveTo(size.x, size.y * petalScaler);
+    line.curveTo(size.x, size.y * petalScaler);
     // Bottom again
-    path.curveTo(0, 0);
-    path.close();
-    path.setCircleResolution(100);
+    line.curveTo(0, 0);
+    line.close();
 }

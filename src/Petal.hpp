@@ -10,7 +10,7 @@ class Petal {
         void update();
         void draw();
         float getIncrementer();
-        void drawPath();
+        void drawLine();
 
         glm::vec2 size, noiseySize;
         float deg, degreeIncrementer, petalScaler;
@@ -27,7 +27,7 @@ class Petal {
 
         ofShader shader;
 
-        ofPath path;
+        ofPolyline line;
 
         ofxTriangleMesh mesh;
         
