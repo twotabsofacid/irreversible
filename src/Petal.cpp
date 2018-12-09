@@ -16,7 +16,7 @@ Petal::Petal(int _r, int _g, int _b, float _deg, float _degreeIncrementer, float
     lifespan = _lifespan;
     noiseySize.x = ofNoise(ofGetElapsedTimef());
     noiseySize.y = ofNoise(ofGetElapsedTimef() + 100);
-    // Unable to get shader.vert working...
+    // load the shaders
     shader.load("shader.vert","shader.frag");
 }
 
