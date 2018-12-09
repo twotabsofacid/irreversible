@@ -9,6 +9,7 @@ uniform float u_sizeY;
 uniform float u_time;
 uniform float u_incrementer;
 uniform float u_lifespan;
+uniform float u_zIndex;
 uniform vec3 u_rgb;
 
 void main() {

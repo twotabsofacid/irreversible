@@ -48,6 +48,7 @@ void Petal::draw(){
     shader.setUniform1f("u_time", ofGetElapsedTimef());
     shader.setUniform1f("u_incrementer", incrementer);
     shader.setUniform1f("u_lifespan", lifespan);
+    shader.setUniform1f("u_zIndex", zIndex);
     shader.setUniform3f("u_rgb", glm::vec3(r/255.0, g/255.0, b/255.0));
     // Create the mesh based on the ofPath object, draw it
     vector<ofPolyline> lines = path.getOutline();
