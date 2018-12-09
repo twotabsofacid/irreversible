@@ -31,7 +31,7 @@ void main() {
     // so that the petals don't overlap each other
     pos.z = (1.f * lenX) + u_zIndex;
     // Change the z position based on how far away the petal is, curl it up at the end
-    // pos.z += 10.f * smoothstep(0.9, 1.f, lenY);
+    // pos.z -= 10.f * smoothstep(0.9, 1.f, lenY);
 
     pos.x += sin(pos.x/80.f + u_time) * 30.f;
 
