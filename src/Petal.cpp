@@ -44,7 +44,7 @@ void Petal::draw(){
     // Begin the shader, assign variables
     shader.begin();
     shader.setUniform1f("u_sizeX", size.x * 2.0);
-    shader.setUniform1f("u_sizey", size.y);
+    shader.setUniform1f("u_sizeY", size.y);
     shader.setUniform1f("u_time", ofGetElapsedTimef());
     shader.setUniform1f("u_incrementer", incrementer);
     shader.setUniform1f("u_lifespan", lifespan);
