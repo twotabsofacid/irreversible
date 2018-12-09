@@ -66,16 +66,16 @@ float Petal::getIncrementer(){
 void Petal::drawPath(){
     path.clear();
     // Bottom
-    path.moveTo(0, 0, 0 + zIndex);
-    path.curveTo(0, 0, 0 + zIndex);
+    path.moveTo(0, 0);
+    path.curveTo(0, 0);
     // Left side
-    path.curveTo(-size.x, size.y * petalScaler, -1 + zIndex);
+    path.curveTo(-size.x, size.y * petalScaler);
     // Top
-    path.curveTo(0, size.y, 0 + zIndex);
+    path.curveTo(0, size.y);
     // Right size
-    path.curveTo(size.x, size.y * petalScaler, 1 + zIndex);
+    path.curveTo(size.x, size.y * petalScaler);
     // Bottom again
-    path.curveTo(0, 0, 0 + zIndex);
+    path.curveTo(0, 0);
     path.close();
     path.setCircleResolution(100);
 }
