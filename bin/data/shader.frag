@@ -9,6 +9,7 @@ uniform float u_sizeY;
 uniform float u_time;
 uniform float u_incrementer;
 uniform float u_lifespan;
+uniform float u_zIndex;
 uniform vec3 u_rgb;
 
 void main() {
@@ -16,7 +17,7 @@ void main() {
     vec3 new_rgb = vec3(0.f, 0.f, 0.f);
     float len = distance(vertexCoordVarying.xy, vec2(0.0, 0.0))/distance(vec2(u_sizeX, u_sizeY), vec2(0.0, 0.0));
     float maxVal = max(max(u_rgb.r, u_rgb.g), u_rgb.b);
-    float multiplier = (1/maxVal) * len;
+    float multiplier = (1/maxVal) * (len * 1.6);
     if (u_incrementer > u_lifespan * 0.75) {
         new_rgb.r = mix(u_rgb.r * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));
         new_rgb.g = mix(u_rgb.g * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));

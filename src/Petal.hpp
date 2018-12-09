@@ -1,5 +1,6 @@
 #pragma once
 #include "ofMain.h"
+#include "ofxTriangleMesh.h"
 
 class Petal {
 
@@ -9,7 +10,7 @@ class Petal {
         void update();
         void draw();
         float getIncrementer();
-        void drawPath();
+        void drawLine();
 
         glm::vec2 size, noiseySize;
         float deg, degreeIncrementer, petalScaler;
@@ -26,8 +27,8 @@ class Petal {
 
         ofShader shader;
 
-        ofPath path;
+        ofPolyline line;
 
-        ofMesh mesh;
+        ofxTriangleMesh mesh;
         
 };

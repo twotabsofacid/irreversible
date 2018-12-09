@@ -10,6 +10,7 @@ uniform float u_sizeY;
 uniform float u_time;
 uniform float u_incrementer;
 uniform float u_lifespan;
+uniform float u_zIndex;
 uniform vec3 u_rgb;
 
 // normal variables
@@ -22,17 +23,17 @@ void main() {
     vec4 pos = gl_Vertex;   // vec4 = x,y,z (and w...)
 
     // Calculate the distance of the vertex from 0,0
-    float len = distance(gl_Vertex.xy, vec2(0.0, 0.0))/distance(vec2(u_sizeX, u_sizeY), vec2(0.0, 0.0));
+    float len = distance(pos.xy, vec2(0.0, 0.0))/distance(vec2(u_sizeX, u_sizeY), vec2(0.0, 0.0));
+    float lenX = pos.x/u_sizeX;
+    float lenY = pos.y/u_sizeY;
 
-    // TODO
-    // Use smoothstep to make the petal curl out & down at the edges
-    // to give the illusion of depth
-    // This is kind of working but also extremely fucked
-    if (distance(vec2(u_sizeX, u_sizeY), vec2(0.0, 0.0)) > 200) {
-        pos.z -= smoothstep(0.9, 1.0, len);
-    }
+    // Change the z position of vertex depending on where it is in relation to 0.0
+    // so that the petals don't overlap each other
+    pos.z = (1.f * lenX) + u_zIndex;
+    // Change the z position based on how far away the petal is, curl it up at the end
+    // pos.z -= 10.f * smoothstep(0.9, 1.f, lenY);
 
-    pos.x += sin(gl_Vertex.x/80.f + u_time) * 30.f;
+    pos.x += sin(pos.x/80.f + u_time) * 30.f;
 
     // Change the pos values if you wanna,
     // then they'll change in the output here
