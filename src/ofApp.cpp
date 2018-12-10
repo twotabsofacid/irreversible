@@ -41,9 +41,9 @@ void ofApp::update(){
 		flowers[incrementer].shouldCreateNew = true;
 	}
 	// Start fading out the center of the flower at 1100 frames
-	if (numFrames >= 1140) {
+	if (numFrames >= 1100) {
 		currentColor = storedColor;
-		currentColor.lerp(ofColor(0, 0, 0), (numFrames - 1140)/(1200 - 1140));
+		currentColor.lerp(ofColor(0, 0, 0), (numFrames - 1100)/(1200 - 1100));
 	}
 	// Every 1200 frames delete the existing flower and create a new one
 	if (numFrames >= 1200) {
