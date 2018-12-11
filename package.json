@@ -4,7 +4,8 @@
   "description": "> Some art code :joy:",
   "main": "index.js",
   "scripts": {
-    "start": "node bin/scripts/text-to-color.js && make"
+    "build": "node bin/scripts/text-to-color.js && make",
+    "start": "node bin/scripts/text-to-color.js && make && make RunRelease"
   },
   "repository": {
     "type": "git",

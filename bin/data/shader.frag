@@ -17,7 +17,7 @@ void main() {
     vec3 new_rgb = vec3(0.f, 0.f, 0.f);
     float len = distance(vertexCoordVarying.xy, vec2(0.0, 0.0))/distance(vec2(u_sizeX, u_sizeY), vec2(0.0, 0.0));
     float maxVal = max(max(u_rgb.r, u_rgb.g), u_rgb.b);
-    float multiplier = (1/maxVal) * (len * 1.6);
+    float multiplier = (1/maxVal) * (len * 1.4);
     // If we're more than 75% of the way through the lifespan, start fading colors to black
     if (u_incrementer > u_lifespan * 0.75) {
         new_rgb.r = mix(u_rgb.r * multiplier, 0.0, (u_incrementer - u_lifespan * 0.75)/(u_lifespan * 0.25));
