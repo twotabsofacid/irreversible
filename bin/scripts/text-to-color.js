@@ -4,7 +4,7 @@ const fs = require('fs');
 
 class TextToColors {
 	constructor() {
-		fs.readFile('./bin/data/input.txt', 'utf8', (err, data) => {
+		fs.readFile('./bin/data/globalwarming.txt', 'utf8', (err, data) => {
 			if (err) throw err;
 			let hexString = new Buffer(data).toString('hex');
 			let newData = hexString[0];
