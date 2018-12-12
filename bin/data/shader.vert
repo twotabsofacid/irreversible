@@ -13,9 +13,6 @@ uniform float u_lifespan;
 uniform float u_zIndex;
 uniform vec3 u_rgb;
 
-// normal variables
-float PI = 3.14159265359;
-
 void main() {
 	vertexCoordVarying = gl_Vertex.xy;
 	
