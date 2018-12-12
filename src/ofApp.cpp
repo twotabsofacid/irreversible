@@ -18,12 +18,13 @@ void ofApp::setup(){
 		int r = number >> 16;
 		int g = number >> 8 & 0xFF;
 		int b = number & 0xFF;
-		Flower flower = Flower(r, g, b);
+		Flower flower = Flower(glm::vec3(r, g, b));
 		flowers.push_back(flower);
 	}
 	cout << flowers.size() << endl;
 	currentColor = ofColor(0, 0, 0);
-	storedColor = ofColor(flowers[incrementer].r, flowers[incrementer].g, flowers[incrementer].b);
+	glm::vec3 newColor = flowers[incrementer].rgb;
+	storedColor = ofColor(newColor.x, newColor.y, newColor.z);
 }
 
 //--------------------------------------------------------------
@@ -51,7 +52,8 @@ void ofApp::update(){
 		flowers[incrementer].deletePetals();
 		incrementer = (incrementer + 1) % flowers.size();
 		currentColor = ofColor(0, 0, 0);
-		storedColor = ofColor(flowers[incrementer].r, flowers[incrementer].g, flowers[incrementer].b);
+		glm::vec3 newColor = flowers[incrementer].rgb;
+		storedColor = ofColor(newColor.x, newColor.y, newColor.z);
 	} else {
 		flowers[incrementer].update();
 	}
@@ -77,12 +79,14 @@ void ofApp::keyReleased(int key){
 		flowers[incrementer].deletePetals();
 		incrementer = (incrementer - 1) % flowers.size();
 		currentColor = ofColor(0, 0, 0);
-		storedColor = ofColor(flowers[incrementer].r, flowers[incrementer].g, flowers[incrementer].b);
+		glm::vec3 newColor = flowers[incrementer].rgb;
+		storedColor = ofColor(newColor.x, newColor.y, newColor.z);
 	} else if (key == OF_KEY_RIGHT) {
 		savedTime = ofGetFrameNum();
 		flowers[incrementer].deletePetals();
 		incrementer = (incrementer + 1) % flowers.size();
 		currentColor = ofColor(0, 0, 0);
-		storedColor = ofColor(flowers[incrementer].r, flowers[incrementer].g, flowers[incrementer].b);
+		glm::vec3 newColor = flowers[incrementer].rgb;
+		storedColor = ofColor(newColor.x, newColor.y, newColor.z);
 	}
 }

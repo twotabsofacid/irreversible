@@ -5,14 +5,14 @@
 class Flower {
 	public:
 		Flower();
-		Flower(int _r, int _g, int _b);
+		Flower(glm::vec3 _rgb);
 		void update();
 		void draw();
 		void makeNewPetals(int newPetals);
 		void deletePetals();
 
 		glm::vec2 pos;
-		int r, g, b;
+		glm::vec3 rgb;
 
 		bool shouldCreateNew = true;
 

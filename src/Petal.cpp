@@ -5,10 +5,8 @@ Petal::Petal(){
 }
 
 // Overload the constructor
-Petal::Petal(int _r, int _g, int _b, float _deg, float _degreeIncrementer, float _petalScaler, int _lifespan){
-    r = _r;
-    g = _g;
-    b = _b;
+Petal::Petal(glm::vec3 _rgb, float _deg, float _degreeIncrementer, float _petalScaler, int _lifespan){
+    rgb = _rgb;
     size = glm::vec2(xIncrementer, yIncrementer);
     deg = _deg;
     degreeIncrementer = _degreeIncrementer;
@@ -49,7 +47,7 @@ void Petal::draw(){
     shader.setUniform1f("u_incrementer", incrementer);
     shader.setUniform1f("u_lifespan", lifespan);
     shader.setUniform1f("u_zIndex", zIndex);
-    shader.setUniform3f("u_rgb", glm::vec3(r/255.0, g/255.0, b/255.0));
+    shader.setUniform3f("u_rgb", glm::vec3(rgb.x/255.0, rgb.y/255.0, rgb.z/255.0));
     // Create the mesh based on the ofPolyline object, draw it
     mesh.triangulate(line, 28, -1);
     mesh.draw();

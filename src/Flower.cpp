@@ -6,10 +6,8 @@ Flower::Flower(){
 }
 
 //--------------------------------------------------------------
-Flower::Flower(int _r, int _g, int _b){
-	r = _r;
-	g = _g;
-	b = _b;
+Flower::Flower(glm::vec3 _rgb){
+	rgb = _rgb;
 	pos = glm::vec2(ofGetWidth()/2, ofGetHeight()/2);
 	savedTime = ofGetFrameNum();
 }
@@ -48,7 +46,7 @@ void Flower::makeNewPetals(int newPetals) {
 	float petalScaler = ofRandom(0.2, 0.5);
 	for (int i = 0; i < newPetals; i++) {
         float deg = i * degreeSlice;
-        Petal petal = Petal(r, g, b, deg, degreeIncrementer, petalScaler, lifespan);
+        Petal petal = Petal(rgb, deg, degreeIncrementer, petalScaler, lifespan);
         petals.push_back(petal);
 	}
 }

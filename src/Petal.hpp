@@ -6,15 +6,16 @@ class Petal {
 
     public:
         Petal();
-        Petal(int _r, int _g, int _b, float _deg, float _degreeIncrementer, float _petalScaler, int _lifespan);
+        Petal(glm::vec3 _rgb, float _deg, float _degreeIncrementer, float _petalScaler, int _lifespan);
         void update();
         void draw();
         float getIncrementer();
         void drawLine();
 
+        glm::vec3 rgb;
         glm::vec2 size, noiseySize;
         float deg, degreeIncrementer, petalScaler;
-        int lifespan, r, g, b;
+        int lifespan;
 
         float xIncrementer = 0.7;
         float yIncrementer = 2.1;
